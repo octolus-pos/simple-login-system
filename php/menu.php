@@ -47,6 +47,11 @@ if(isset($_SESSION['id']))
         <li><a href="register.php">Register</a></li>
       </ul>
       <?php } else { ?>
+
+      <ul class="nav navbar-nav">
+        <li><a href="index.php">Home</a>
+        <li><a href="settings.php">Settings</a>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="logout.php">Logout</a>
       </ul>

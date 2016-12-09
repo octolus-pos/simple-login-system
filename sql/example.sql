@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 09. Des, 2016 18:49 p.m.
+-- Generation Time: 09. Des, 2016 19:47 p.m.
 -- Server-versjon: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -46,7 +46,8 @@ CREATE TABLE `users` (
   `password` tinytext NOT NULL,
   `email` tinytext NOT NULL,
   `reg_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `reg_ip` varchar(15) NOT NULL
+  `reg_ip` varchar(15) NOT NULL,
+  `rank` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -79,12 +80,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `login_logs`
 --
 ALTER TABLE `login_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

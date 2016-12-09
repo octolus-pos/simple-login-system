@@ -167,6 +167,15 @@ class User extends Database
         return header("Location: login.php");
     }
 
+    public static function isAdmin($rank)
+    {
+        if($rank == 1)
+        {
+            return true;
+        }
+        
+        return false;
+    }
 
     private function logLogin($uid)
     {
@@ -180,6 +189,44 @@ class User extends Database
         {
         	$this->insert("INSERT INTO `login_logs` (`id`, `uid`, `ipaddr`, `log_date`, `used`) VALUES (NULL, :uid, :ip, CURDATE(), 1);", array(":uid" => $uid, ":ip" => $_SERVER['REMOTE_ADDR']));
         }
+    }
+
+    public function ChangePassword($uid, $existingpw, $newpw, $repeatpw)
+    {
+        if(!$this->validatePassword($newpw))
+        {
+            return false;
+        }
+
+        if($newpw != $repeatpw)
+        {
+            return false;
+        }
+
+        $result = $this->Query("SELECT `password` FROM `users` WHERE `id` = :uid LIMIT 1;", array(":uid" => $uid));
+
+        if(!empty($result))
+        {
+            if(password_verify($existingpw, $result['password']))
+            {
+                $password = password_hash($newpw, PASSWORD_BCRYPT, array("cost" => 8));
+                $this->insert("UPDATE `users` SET `password` = :pw WHERE `users`.`id` = :uid", array(":pw" => $password, ":uid" => $uid));
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function UpdateEmail($uid, $email)
+    {
+        if(!$this->validateEmail($email))
+        {
+            return false;
+        }
+        
+        $this->insert("UPDATE `users` SET `email` = :email WHERE `users`.`id` = :uid", array(":email" => $email, ":uid" => $uid));
+        return true;
     }
 
 }

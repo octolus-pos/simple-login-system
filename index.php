@@ -17,7 +17,13 @@ $(function () {
 
 
 <div class="container">
-<h1>Welcome, <?php echo $info['username']; ?>!</h1>
+<h1>Welcome, <?php echo $info["username"]; ?>!</h1>
+
+<?php 
+if(User::isAdmin($info['rank'])) 
+{ 
+	echo '<span class="label label-danger">Administrator</span>'; }
+?>
 </div>
 
 </body>
