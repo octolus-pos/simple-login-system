@@ -13,12 +13,10 @@ if(isset($_POST['username'], $_POST['password']))
 	else
 	{
 		echo '
+		<div class="container">
 		<div class="alert alert-danger" role="alert">
-		<b>An error occured during your registration:</b>
-		<br />
-		<li>
-		<ul>test</ul>
-		</li>
+		<b>Invalid Login:</b> your username/password combination did not match any users.
+		</div>
 		</div>
 		';
 	}
