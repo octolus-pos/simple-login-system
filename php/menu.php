@@ -40,13 +40,18 @@ if(isset($_SESSION['id']))
       <a class="navbar-brand" href="#">Secure Login System</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
 
-        <?php if(!$info) { ?>
-            <li><a href="login.php">Login</a></li>
-            <li><a href="register.php">Register</a></li>
-        <?php } ?>
+      <?php if(!$info) { ?>
+      <ul class="nav navbar-nav">
+        <li><a href="login.php">Login</a></li>
+        <li><a href="register.php">Register</a></li>
       </ul>
+      <?php } else { ?>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="logout.php">Logout</a>
+      </ul>
+      <?php } ?>
+
     </div>
   </div>
 </nav>
